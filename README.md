@@ -1,8 +1,14 @@
-# FDC17 — Laravel Admin Practice App
+# Inventory & Order Management System
 
 A Laravel 12 project combining a set of Laravel-concept tutorial routes (routing, CSRF, sessions, Blade components/localization, middleware) with a working admin-panel mini e-commerce app for managing brands, categories, items, and orders.
 
 ## Project Summary
+
+**Admin app (CRUD)**:
+- **Brands** and **Categories** — simple lookup tables
+- **Items** — belongs to a brand and a category, has an image upload, unique item code and price
+- **Orders** — create/edit an order by searching and adding items; line items are stored in `order_items` with price, qty, and sub-total, wrapped in a DB transaction on update
+- **Users** — CRUD plus a password-reset flow
 
 Everything lives under the `/admin` prefix and is protected by a custom session-based login (`AuthController` + `MyAuthMiddleware`).
 
@@ -12,12 +18,6 @@ Everything lives under the `/admin` prefix and is protected by a custom session-
 - Sessions, including a simple task manager (`/admin/session/*`)
 - Blade components and localization (`/admin/blade-template/*`)
 - Generic starter pages (`/admin/page1`–`/admin/page5`, `/admin/app`)
-
-**Admin app (CRUD)**:
-- **Brands** and **Categories** — simple lookup tables
-- **Items** — belongs to a brand and a category, has an image upload, unique item code and price
-- **Orders** — create/edit an order by searching and adding items; line items are stored in `order_items` with price, qty, and sub-total, wrapped in a DB transaction on update
-- **Users** — CRUD plus a password-reset flow
 
 A small JSON API exists at `GET /api/get-items` (`FeatureBController`); Sanctum is installed for token auth but not yet used elsewhere.
 
